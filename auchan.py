@@ -3,6 +3,7 @@ from typing import List
 
 import httpx
 from dotenv import load_dotenv
+from loguru import logger
 
 
 class Product:
@@ -83,6 +84,7 @@ class ApiClient:
 
     def add_product_to_list(self, product: Product, list: WishList):
         """Add a product to a wishlist."""
+        logger.debug(f"Adding {product} to {list}")
         params = {
             "action": "addProductToWishlist",
             "params[id_product]": product.id,
@@ -115,11 +117,14 @@ def main():
     products = set()
     lists = client.get_lists()
     for list in lists:
+        logger.debug(f"Processing list {list}")
         for product in client.get_products_in_list(list):
             products.add(product)
 
     # Create a new list and add all products to it
-    new_list = client.create_list("2024-11-15-merged")
+    new_list = client.create_list("2024-11-15 merged")
+    logger.debug(f"Created new list {new_list}")
+
     for product in products:
         client.add_product_to_list(product, new_list)
 
