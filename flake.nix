@@ -18,7 +18,11 @@
         with pkgs; {
           devShells.default = mkShell {
             #nativeBuildInputs = [pkg-config];
-            buildInputs = [python311];
+            buildInputs = [
+              python313
+              ruff
+              uv
+              ];
           };
         }
     );

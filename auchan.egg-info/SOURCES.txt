@@ -1,0 +1,8 @@
+README.md
+auchan.py
+pyproject.toml
+auchan.egg-info/PKG-INFO
+auchan.egg-info/SOURCES.txt
+auchan.egg-info/dependency_links.txt
+auchan.egg-info/requires.txt
+auchan.egg-info/top_level.txt
